@@ -60,20 +60,85 @@ h3{
     height: 4rem;
 }
 
+
+
+/* -------------- Hamburger Menu ------------*/
+.hamburger{
+    display: none;
+    position: relative;
+    width: 35px;
+    cursor: pointer;
+
+    appearance: none;
+    background: none;
+    outline: none;
+    border: none;
+}
+.hamburger .bar, .hamburger::after, .hamburger::before{
+    content: '';
+    display: block;
+    width: 100%;
+    height: 5px;
+    background-color: #0081c9;
+    border-radius: 5px;
+    margin: 6px 0;
+    transition: 0.4s;
+}
+.hamburger.active::before{
+    transform: rotate(-45deg) translate(-8px, 6px);
+}
+.hamburger.active::after{
+    transform: rotate(45deg) translate(-9px, -8px);
+}
+.hamburger.active .bar{
+    opacity: 0;
+}
+
+.navbar-mobile{
+    padding-top: 150px;
+    min-height: 100vh;
+    background-color: #f7d379;
+    display: flex;
+    right: -100vw;
+    width: 100%;
+    justify-content:center;
+    font-size: 2rem;
+    transition: height 0.3s ease;
+    position: fixed;
+    transition: .3s ease;
+}
+.navbar-mobile.active{
+    right: 0;
+}
+.navbar-mobile ul{
+    list-style: none;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+}
+.navbar-mobile a{
+    text-decoration: none;
+    color: #0081c9;
+    font-weight: bolder;
+}
+.navbar-mobile a:hover{
+    color: #FFC947;
+}
+
+
 /*--------------- Hero ------------- */
 .hero-container{
-    padding: 10rem 7rem 0;
+    padding: 6rem 7rem 0;
     display: flex;
     min-height: 100vh;
-    align-items: top;
 }
 .hero-text{
+    align-items: top;
     color:#0081c9;
+    flex: 1;
 }
-
-
-
-
 .change-text-spam{
     position: absolute;
     list-style: none;
@@ -82,6 +147,7 @@ h3{
     left: 1;
     opacity: 0;
     transition: opacity .7s ease-in-out;
+    z-index: -1;
 }
 .change-text-spam.active {
     opacity: 1;
@@ -89,11 +155,12 @@ h3{
 }
   
 
-.hero-container{
+.hero-photo{
+    flex: 1;
     background-image: url(../img/hero-img.png);
-    background-size:auto;
-    background-position: bottom;
-    /* z-index: 1; */
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: right;
 }
 
 
@@ -118,6 +185,7 @@ main{
     gap: 2rem;
     justify-content: space-between;
     background-image: url(../img/background.svg);
+    background-size: cover;
     
 }
 .photo-container img{
@@ -153,6 +221,7 @@ main{
 }
 .contact-links{
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
     font-size: 10rem;
@@ -181,4 +250,92 @@ footer{
 footer a{
     color: #f0f0f0;
     text-decoration: none;
+}
+
+
+@media only screen and (max-width: 1000px){
+    .navbar, .hero-container, main, #contact-point{
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+    .navbar{
+        height: 70px;
+        position: fixed;
+        background-color: #f0f0f0;
+    }
+    .navbar.shrink{
+        height: 70px;
+    }
+    .hero-container{
+        background-position: right;
+        flex-direction: column;
+        max-height: 80vh;
+        padding-bottom: 10vh;
+    }
+    .hero-text{
+        flex: 1
+    }
+    .hero-photo{
+        flex: 6;
+        background-position: top;
+    }
+    .photo-container{
+        justify-content: space-around;
+        background-size: auto;
+    }
+}
+@media only screen and (max-width: 600px) {
+
+    h1{
+        font-size: 3rem;
+    }
+    h2{
+        font-size: 1.5rem;
+    }
+    h3{
+        font-size: 1rem;
+    }
+    .navbar ul{
+        display: none;
+    }
+    .navbar{
+        flex-direction: row-reverse;
+        height: 70px;   
+    }
+    .navbar.shrink{
+        height: 70px;
+        background-color: #f7d379;
+    }
+    .navbar-logo{
+        margin-right: auto;
+        margin-left: 0%;
+    }
+    nav img{
+        margin-right: auto;
+        margin-left: 0%;
+    }
+
+    .hamburger{
+        display: block;
+    }
+
+    .hero-container, main{
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    .photo-container{
+        padding-top: 2rem ;
+        align-items: center;
+        justify-content: center;
+    }
+    .photo-container img{
+        max-width: 170px;
+    }
+    #contact-point{
+        padding: 5rem 1rem 0;
+    }
+    .contact-links{
+        flex-direction: column;
+        font-size: 5rem;
+    }
 }

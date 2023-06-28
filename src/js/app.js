@@ -43,3 +43,21 @@ function changeText() {
 
 }
 setInterval(changeText, 2500); // Change text every 3 seconds
+
+
+
+// Hamburger Menu
+const hamburgerBtn = document.querySelector('.hamburger')
+const navbarMobile = document.querySelector('.navbar-mobile')
+
+hamburgerBtn.addEventListener('click', ()=>{
+  hamburgerBtn.classList.toggle('active');
+  navbarMobile.classList.toggle('active');
+})
+
+const hamburgerBtnLinks = document.querySelector('.navbar-mobile')
+
+hamburgerBtnLinks.addEventListener('click', ()=>{
+  hamburgerBtn.classList.toggle('active');
+  navbarMobile.classList.toggle('active');
+})
